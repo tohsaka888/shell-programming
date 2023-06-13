@@ -87,3 +87,23 @@ echo "Hello $USER_NAME"
 echo "I will create you a file called ${USER_NAME}_file"
 touch "${USER_NAME}_file"
 ```
+
+## Array
+
+在 shell 脚本中，可以使用以下语法定义数组：
+
+```
+my_array=(element1 element2 element3 ...)
+```
+
+其中，`my_array` 是数组名，`element1`、`element2`、`element3` 等是数组元素，可以是字符串、数字或者其他类型的值。如果数组元素中包含空格或其他特殊字符，需要使用引号将其括起来。
+
+例如，下面的代码定义了一个名为 `my_array` 的数组，包含了三个字符串元素：
+
+```
+my_array=("apple" "banana" "orange")
+```
+
+定义数组后，可以通过 `${my_array[index]}` 的方式获取数组中指定位置的元素，其中 `index` 是元素的索引，从 0 开始计数。例如，`${my_array[0]}` 会返回数组中的第一个元素 `"apple"`。
+
+还可以使用 `${my_array[@]}` 获取数组中的所有元素，`${#my_array[@]}` 获取数组的长度，以及 `${!my_array[@]}` 获取数组中所有元素的索引。
