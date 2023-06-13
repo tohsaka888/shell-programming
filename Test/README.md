@@ -73,3 +73,34 @@ fi
 
 This will echo `"Something"` if the `[ something ]` test succeeds, otherwise it will test `[ something_else ]`, and echo `"Something else"` if that succeeds. If all else fails, it will echo `"None of the above"`.
 
+## 补充
+
+在 `shell` 中，中括号 `[ ]` 用于测试表达式的真假值。在 `if` 语句中，需要测试多个表达式的真假值，因此需要使用逻辑运算符，如 `&&` 或 `-a`，将多个表达式连接起来。
+
+使用中括号的原因是，中括号内的表达式会被解析为一个整体，然后返回一个真或假的值。因此，需要将每个表达式都放在中括号内，然后使用逻辑运算符连接它们。
+
+当然，也可以使用双中括号 `[[ ]]` 来代替单中括号，它也可以进行逻辑运算。但是，双中括号有一些特殊的语法和行为，例如可以进行模式匹配和字符串比较，因此在某些情况下可能会更加方便。但是在本例中，使用单中括号即可。
+
+```shell
+#!/bin/sh
+
+echo "Script Start!!!"
+
+judge_your_grade()
+{
+    SCORE=$1
+    if [[ $SCORE -ge 90 && $SCORE -le 100 ]]; then
+        echo "A"
+    elif [[ $SCORE -ge 80 && $SCORE -lt 90 ]]; then
+        echo "B"
+    elif [[ $SCORE -ge 70 && $SCORE -lt 80 ]]; then
+        echo "C"
+    elif [[ $SCORE -ge 60 && $SCORE -lt 70 ]]; then
+        echo "D"
+    else
+        echo "Not Pass!"
+    fi
+}
+
+judge_your_grade 99
+```
